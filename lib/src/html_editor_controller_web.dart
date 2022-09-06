@@ -303,7 +303,7 @@ class HtmlEditorController extends unsupported.HtmlEditorController {
 
   /// Helper function to process input html
   String _processHtml({required html, preProcessing}) {
-    /// shut off process input html if needed e.g. for pasting pre-tags
+    /// shut off process input html if needed e.g. for pasting pre-tags test
     if (preProcessing == false) {
       return html;
     }
