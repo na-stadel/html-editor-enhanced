@@ -81,8 +81,8 @@ class HtmlEditorController extends unsupported.HtmlEditorController {
   /// Sets the text of the editor. Some pre-processing is applied to convert
   /// [String] elements like "\n" to HTML elements.
   @override
-  void setText(String text) {
-    text = _processHtml(html: text);
+  void setText(String text, {bool withPreprocessing = false}) {
+    text = _processHtml(html: text, preProcessing: withPreprocessing);
     _evaluateJavascriptWeb(data: {'type': 'toIframe: setText', 'text': text});
   }
 
@@ -302,7 +302,11 @@ class HtmlEditorController extends unsupported.HtmlEditorController {
   }
 
   /// Helper function to process input html
-  String _processHtml({required html}) {
+  String _processHtml({required html, preProcessing}) {
+    /// shut off process input html if needed e.g. for pasting pre-tags
+    if (preProcessing == false) {
+      return html;
+    }
     if (processInputHtml) {
       html = html.replaceAll('\r', '').replaceAll('\r\n', '');
     }
