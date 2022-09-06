@@ -81,7 +81,7 @@ class HtmlEditorController extends unsupported.HtmlEditorController {
   /// Sets the text of the editor. Some pre-processing is applied to convert
   /// [String] elements like "\n" to HTML elements.
   @override
-  void setText(String text, {bool withPreprocessing = false}) {
+  void setText(String text, {bool withPreprocessing = true}) {
     text = _processHtml(html: text, preProcessing: withPreprocessing);
     _evaluateJavascriptWeb(data: {'type': 'toIframe: setText', 'text': text});
   }
